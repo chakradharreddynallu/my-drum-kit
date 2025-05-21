@@ -1,0 +1,87 @@
+
+body {
+  font-size: 10px;
+  background: url('./asfalt-dark.png') bottom center;
+  background-size: cover;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.keys {
+  display: flex;
+  gap: 10px;
+}
+
+/* Key style */
+.key {
+  border: 2px solid #fff;
+  padding: 20px;
+  font-size: 1.5rem;
+  color: white;
+  background: #83857d;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 8px;
+  text-align: center;
+  width: 80px;
+  position: relative;
+  overflow: visible;
+}
+
+.key kbd {
+  display: block;
+  font-size: 2rem;
+}
+
+.key .sound {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* When key is active */
+/* .key.playing {
+  background-color: #ffc600;
+  box-shadow: 0 0 10px #ffc600;
+}  */
+
+.key.playing {
+  transform: scale(1.1);
+  background-color: #bbb7a7;
+  box-shadow: 0 0 10px #28251b;
+}
+
+/* Firework container */
+.firework {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dots used in the explosion */
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: hsl(calc(var(--i) * 30), 100%, 50%);
+  transform: rotate(calc(var(--i) * 30deg)) translateX(0);
+  animation: explode 0.4s ease-out forwards;
+  z-index: -1;
+}
+
+/* Explosion animation */
+@keyframes explode {
+  to {
+    transform: rotate(calc(var(--i) * 30deg)) translateX(30px);
+    opacity: 0;
+  }
+}
